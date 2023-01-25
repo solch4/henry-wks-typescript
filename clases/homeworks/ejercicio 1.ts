@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 //Typescript va a inferir nuestra variable en la primer asignacion
 let variableInferida = 2;
 
@@ -8,17 +10,12 @@ let variableExplicita: number = 2;
 //es un number, porque la suma de dos numeros es SIEMPRE un numero.
 let resultado = variableExplicita + variableInferida
 
-//completar el tipado correspondiente para cada variable
-
-let unString: null = 'mati';
-
-let unNumber: null = 2;
-
-let unBoolean: null = true;
-
-let unNull: undefined = null; //que pasa aca?
-
-let unUndefined: null = undefined //y aca?
+//Ejercicio: completar el tipado correspondiente para cada variable
+let unString: string = 'mati';
+let unNumber: number = 2;
+let unBoolean: boolean = true;
+let unNull: null = null; //que pasa aca?
+let unUndefined: undefined = undefined //y aca?
 
 	
 // Enum
@@ -33,6 +30,8 @@ enum userActions {
     fetchUser = "FETCH_USER", // "FETCH_USER"
     postUser = "POST_USER" // "POST_USER"
 }
+let fetch: userActions = userActions.fetchUser  //"FETCH_USER"
+let post: userActions = userActions.postUser  //"POST_USER"
 
 
 export {}
