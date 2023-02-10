@@ -14,7 +14,6 @@ router.post("/", (req: Request, res: Response, next: NextFunction) => {
   User.create(user)
     .then((createdUser) => res.send(createdUser))
     .catch((err) => next(err));
-  res.send("Soy la ruta post");
 });
 
 export default router;
