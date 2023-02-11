@@ -1,22 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { getUsers, User } from "../actions";
+import { StoreState } from "../reducers";
 
 interface AppProps {
-  title: string;
+  users: User[];
+  getUsers(): any;
 }
 
-function App({ title }: AppProps): JSX.Element {
-  const [counter, setCounter] = useState(0);
-
+function App({ users, getUsers }: AppProps): JSX.Element {
   return (
-    <div>
-      <h3>Henry Workshop - {title}</h3>
+    <>
+      <button onClick={getUsers}>Get users</button>
       <hr />
-      <button onClick={() => setCounter(counter + 1)}>Increment</button>
-      <button onClick={() => setCounter(counter - 1)}>Decrement</button>
-      <br />
-      <span>{counter}</span>
-    </div>
+      <table style={{ width: "100%" }}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user: User) => (
+            <tr key={user.id}>
+              <th>{user.id}</th>
+              <th>{user.name}</th>
+              <th>{user.email}</th>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 
-export default App;
+const mapStateToProps = (state: StoreState): { users: User[] } => {
+  return {
+    users: state.users,
+  };
+};
+
+export default connect(mapStateToProps, { getUsers })(App);
